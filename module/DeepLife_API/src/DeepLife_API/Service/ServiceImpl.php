@@ -14,6 +14,7 @@ use DeepLife_API\Model\Disciple;
 use DeepLife_API\Model\NewsFeed;
 use DeepLife_API\Model\Questions;
 use DeepLife_API\Model\Schedule;
+use DeepLife_API\Model\Testimony;
 use DeepLife_API\Model\User;
 use DeepLife_API\Model\User_Role;
 use DeepLife_API\Model\UserReport;
@@ -430,6 +431,16 @@ class ServiceImpl implements Service
     {
         try{
             return $this->apiRepository->Delete_All_NewsFeed_Log($user);
+        }catch(\Exception $e){
+            $this->LogError($e);
+            return array();
+        }
+    }
+
+    public function AddTestimony(Testimony $testimony)
+    {
+        try{
+            return $this->apiRepository->AddTestimony($testimony);
         }catch(\Exception $e){
             $this->LogError($e);
             return array();
