@@ -412,7 +412,11 @@ class apiController extends AbstractRestfulController
                 $sch->setUserId($this->api_user->getId());
                 $sch->setTitle($data['title']);
                 $sch->setDetail($data['detail']);
-                $state[] = $smsService->AddTestimony($sch);
+                $state = $smsService->AddTestimony($sch);
+                if($state){
+                    $testimony_res['Log_ID'] = $data['id'];
+                    $res['Log_Response'][] = $testimony_res;
+                }
             }
             $this->api_Response['Response'] = $state;
         }
