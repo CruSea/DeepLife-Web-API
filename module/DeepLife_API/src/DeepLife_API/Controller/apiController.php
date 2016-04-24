@@ -206,7 +206,7 @@ class apiController extends AbstractRestfulController
                 $new_user = $hydrator->GetDisciple($data);
                 $new_user->setId($this->api_user->getId());
                 $new_user->setMentorId($this->api_user->getId());
-                $new_user->setPassword('-'); 
+                $new_user->setPassword('-');
                 $state = $smsService->AddNew_Disciple($new_user,$new_user);
                 if($state){
                     /**
@@ -406,7 +406,8 @@ class apiController extends AbstractRestfulController
             $this->api_Response['Response'] = array('NewsFeeds',$smsService->GetNew_NewsFeeds($this->api_user));
         }
         elseif($service == $this->api_Services[23]){
-            // GetNew NewsFeed
+            // GetNew Testimony
+
             foreach($this->api_Param as $data){
                 $sch = new Testimony();
                 $sch->setUserId($this->api_user->getId());
@@ -420,8 +421,8 @@ class apiController extends AbstractRestfulController
             }
             $this->api_Response['Response'] = $state;
         }
-
     }
+    
     public function isValidRequest($api_request){
         $this->api_Response['Request_Error'] = array();
         if(isset($api_request['User_Name']) && isset($api_request['User_Pass']) && isset($api_request['Country'])
