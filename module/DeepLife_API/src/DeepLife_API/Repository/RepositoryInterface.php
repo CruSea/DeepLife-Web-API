@@ -53,12 +53,14 @@ interface RepositoryInterface extends Repository
 
     public function AddNew_Question(Questions $questions);
     public function GetAll_Question();
+    public function Get_Question(User $user);
 
     public function AddNew_Answer(Answers $answers);
     public function GetAll_Answers(User $user);
 
     public function AddNew_Report(User $user);
     public function GetAll_Report();
+    public function Get_Report(User $user);
 
     public function GetAll_Country();
 
@@ -69,8 +71,5 @@ interface RepositoryInterface extends Repository
     public function AddNew_NewsFeed_log(NewsFeed $news);
     public function Delete_All_NewsFeed_Log(User $user);
 
-
     public function AddTestimony(Testimony $testimony);
-
-
 }

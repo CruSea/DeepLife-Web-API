@@ -24,6 +24,7 @@ class Hydrator
                     $New_Data->setPhoneNo(isset($data['phone_no'])? $data['phone_no']:null);
                     $New_Data->setMentorId(isset($data['mentor_id'])? $data['mentor_id']:null);
                     $New_Data->setPicture(isset($data['picture'])? $data['picture']:null);
+                    $New_Data->setRoleId(isset($data['role_id'])? $data['role_id']:null);
                     $New_Data->setCreated(isset($data['created'])? $data['created']:null);
                     $Found[] = $New_Data;
                 }
@@ -72,6 +73,7 @@ class Hydrator
                 foreach($Post as $data){
                     $New_Data = new Report();
                     $New_Data->setId(isset($data['id'])? intval($data['id']):null);
+                    $New_Data->setCountryId(isset($data['country_id'])? ($data['country_id']):null);
                     $New_Data->setCategory(isset($data['category'])? ($data['category']):null);
                     $New_Data->setQuestion(isset($data['question'])? $data['question']:null);
                     $New_Data->setCreated(isset($data['created'])? $data['created']:null);
@@ -163,6 +165,7 @@ class Hydrator
                 foreach($Post as $data){
                     $New_Data = new Report();
                     $New_Data->setId(isset($data['id'])? intval($data['id']):null);
+                    $New_Data->setCountryId(isset($data['country_id'])? ($data['country_id']):null);
                     $New_Data->setCategory(isset($data['category'])? ($data['category']):null);
                     $New_Data->setQuestion(isset($data['question'])? $data['question']:null);
                     $New_Data->setCreated(isset($data['created'])? $data['created']:null);
@@ -215,6 +218,7 @@ class Hydrator
                     $New_Data->setMentorId(isset($data['mentor_id'])? $data['mentor_id']:null);
                     $New_Data->setPicture(isset($data['picture'])? $data['picture']:null);
                     $New_Data->setStage(isset($data['stage'])? $data['stage']:null);
+                    $New_Data->setRoleId(isset($data['role_id'])? $data['role_id']:null);
                     $New_Data->setGender(isset($data['gender'])? $data['gender']:null);
                     $New_Data->setCreated(isset($data['created'])? $data['created']:null);
                     $Found = $New_Data;

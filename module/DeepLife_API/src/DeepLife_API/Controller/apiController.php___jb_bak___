@@ -13,7 +13,6 @@ use DeepLife_API\Model\Disciple;
 use DeepLife_API\Model\Hydrator;
 use DeepLife_API\Model\NewsFeed;
 use DeepLife_API\Model\Schedule;
-use DeepLife_API\Model\Testimony;
 use DeepLife_API\Model\User;
 use DeepLife_API\Model\User_Role;
 use DeepLife_API\Model\UserReport;
@@ -206,7 +205,7 @@ class apiController extends AbstractRestfulController
                 $new_user = $hydrator->GetDisciple($data);
                 $new_user->setId($this->api_user->getId());
                 $new_user->setMentorId($this->api_user->getId());
-                $new_user->setPassword('-'); 
+                $new_user->setPassword('-');
                 $state = $smsService->AddNew_Disciple($new_user,$new_user);
                 if($state){
                     /**
@@ -238,7 +237,7 @@ class apiController extends AbstractRestfulController
         }elseif($service == $this->api_Services[6]){
             $this->api_Response['Response'] = array('Schedules',$smsService->GetNew_Schedule($this->api_user));
         }elseif($service == $this->api_Services[7]){
-           //Add new Schedule
+            //Add new Schedule
             $res['Log_Response'] = array();
             $state = null;
             foreach($this->api_Param as $data){
@@ -257,7 +256,7 @@ class apiController extends AbstractRestfulController
             }
             $this->api_Response['Response'] = $res;
         }elseif($service == $this->api_Services[8]){
-           // Add Schedule Log
+            // Add Schedule Log
             $state = null;
             foreach($this->api_Param as $data){
                 $sch = new Schedule();
@@ -346,14 +345,13 @@ class apiController extends AbstractRestfulController
             $smsService->Delete_Schedule_Log($this->api_user);
             $found['Disciples'] = $smsService->GetAll_Disciples($this->api_user);
             $found['Schedules'] = $smsService->GetAll_Schedule($this->api_user);
-            $found['Questions'] = $smsService->Get_Question($this->api_user);
-            $found['Reports'] = $smsService->Get_Report($this->api_user);
+            $found['Questions'] = $smsService->GetAll_Question();
             /**
              * @var \DeepLife_API\Model\User $profile
              */
             $profile = $smsService->Get_User($this->api_user);
             $found['Profile'] = $profile->getArray();
-
+            $found['Reports'] = $smsService->GetAll_Report();
             $this->api_Response['Response'] = $found;
         }elseif($service == $this->api_Services[17]) {
             /// Sign up
@@ -387,8 +385,8 @@ class apiController extends AbstractRestfulController
             $found['Disciples'] = $smsService->GetNew_Disciples($this->api_user);
             $found['Schedules'] = $smsService->GetNew_Schedule($this->api_user);
             $found['NewsFeeds'] = $smsService->GetNew_NewsFeeds($this->api_user);
-           // $found['Questions'] = $smsService->Get_Question($this->api_user);
-            //$found['Reports'] = $smsService->Get_Report($this->api_user);
+            $found['Questions'] = $smsService->GetAll_Question();
+            $found['Reports'] = $smsService->GetAll_Report();
 
             $this->api_Response['Response'] = $found;
         }elseif($service == $this->api_Services[21]){
