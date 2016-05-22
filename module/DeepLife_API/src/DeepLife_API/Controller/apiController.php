@@ -122,6 +122,7 @@ class apiController extends AbstractRestfulController
                 $new_user->setEmail($param['User_Email']);
                 $new_user->setPassword($param['User_Pass']);
                 $new_user->setGender($param['User_Gender']);
+                $new_user->setRoleId(1);
                 if(!$smsService->isThere_User($new_user)){
                     $state = $smsService->AddNew_User($new_user);
                     if($state){
@@ -132,13 +133,6 @@ class apiController extends AbstractRestfulController
                         $found['Questions'] = $smsService->GetAll_Question();
                         $found['Reports'] = $smsService->GetAll_Report();
                         $this->api_Response['Response'] = $found;
-                        /**
-                         * @var \DeepLife_API\Model\User $added_user
-                         */
-                        $added_user = $smsService->Get_User($new_user);
-                        if($added_user != null){
-                            $smsService->Add_User_Role($added_user->getId(),2);
-                        }
                     }else{
                         $error['Parameter Error'] = 'User Could not be Registered now. Please Try again later';
                         $this->api_Response['Request_Error'] = $error;
@@ -151,13 +145,6 @@ class apiController extends AbstractRestfulController
                         if($state){
                             $state = $smsService->AddNew_User($this->api_user);
                             if($state){
-                                /**
-                                 * @var \DeepLife_API\Model\User $added_user
-                                 */
-                                $added_user = $smsService->Get_User($this->api_user);
-                                if($added_user != null){
-                                    $smsService->Add_User_Role($added_user->getId(),2);
-                                }
                                 $found['Disciples'] = $smsService->GetAll_Disciples($this->api_user);
                                 $found['Schedules'] = $smsService->GetAll_Schedule($this->api_user);
                                 $found['NewsFeeds'] = $smsService->GetNew_NewsFeeds($this->api_user);
