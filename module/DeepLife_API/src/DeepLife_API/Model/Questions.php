@@ -16,6 +16,8 @@ class Questions
     protected $question;
     protected $description;
     protected $mandatory;
+    protected $country;
+    protected $default_question;
     protected $created;
 
     /**
@@ -97,6 +99,39 @@ class Questions
     {
         $this->mandatory = $mandatory;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param mixed $country
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDefaultQuestion()
+    {
+        return $this->default_question;
+    }
+
+    /**
+     * @param mixed $default_question
+     */
+    public function setDefaultQuestion($default_question)
+    {
+        $this->default_question = $default_question;
+    }
+
 
     /**
      * @return mixed
