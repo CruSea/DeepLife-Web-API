@@ -13,11 +13,10 @@ class Questions
 {
     protected $id;
     protected $category;
+    protected $country_id;
     protected $question;
     protected $description;
     protected $mandatory;
-    protected $country;
-    protected $default_question;
     protected $created;
 
     /**
@@ -50,6 +49,22 @@ class Questions
     public function setCategory($category)
     {
         $this->category = $category;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCountryId()
+    {
+        return $this->country_id;
+    }
+
+    /**
+     * @param mixed $country_id
+     */
+    public function setCountryId($country_id)
+    {
+        $this->country_id = $country_id;
     }
 
     /**
@@ -103,39 +118,6 @@ class Questions
     /**
      * @return mixed
      */
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
-    /**
-     * @param mixed $country
-     */
-    public function setCountry($country)
-    {
-        $this->country = $country;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDefaultQuestion()
-    {
-        return $this->default_question;
-    }
-
-    /**
-     * @param mixed $default_question
-     */
-    public function setDefaultQuestion($default_question)
-    {
-        $this->default_question = $default_question;
-    }
-
-
-    /**
-     * @return mixed
-     */
     public function getCreated()
     {
         return $this->created;
@@ -152,6 +134,7 @@ class Questions
         return array(
             'id' => $this->getId(),
             'category' => $this->getCategory(),
+            'country' => $this->getCountryId(),
             'question' => $this->getQuestion(),
             'description' => $this->getDescription(),
             'mandatory' => $this->getMandatory(),

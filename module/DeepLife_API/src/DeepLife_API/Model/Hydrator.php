@@ -50,11 +50,10 @@ class Hydrator
                     $New_Data = new Questions();
                     $New_Data->setId(isset($data['id'])? intval($data['id']):null);
                     $New_Data->setCategory(isset($data['category'])? ($data['category']):null);
+                    $New_Data->setCountryId(isset($data['country'])? ($data['country']):null);
                     $New_Data->setQuestion(isset($data['question'])? $data['question']:null);
                     $New_Data->setDescription(isset($data['description'])? $data['description']:null);
                     $New_Data->setMandatory(isset($data['mandatory'])? $data['mandatory']:null);
-                    $New_Data->setCountry(isset($data['country'])? $data['country']:null);
-                    $New_Data->setDefaultQuestion(isset($data['default_question'])? $data['country']:null);
                     $New_Data->setCreated(isset($data['created'])? $data['created']:null);
                     $Found[] = $New_Data;
                 }
@@ -144,11 +143,10 @@ class Hydrator
                     $New_Data = new Questions();
                     $New_Data->setId(isset($data['id'])? intval($data['id']):null);
                     $New_Data->setCategory(isset($data['category'])? ($data['category']):null);
+                    $New_Data->setCountryId(isset($data['country'])? ($data['country']):null);
                     $New_Data->setQuestion(isset($data['question'])? $data['question']:null);
                     $New_Data->setDescription(isset($data['description'])? $data['description']:null);
                     $New_Data->setMandatory(isset($data['mandatory'])? $data['mandatory']:null);
-                    $New_Data->setCountry(isset($data['country'])? $data['country']:null);
-                    $New_Data->setDefaultQuestion(isset($data['default_question'])? $data['country']:null);
                     $New_Data->setCreated(isset($data['created'])? $data['created']:null);
                     $Found[] = $New_Data->getArray();
                 }

@@ -396,8 +396,9 @@ class RepositoryImpl implements RepositoryInterface
 
     public function Get_Question(User $user)
     {
-        $row_sql = 'SELECT * FROM questions WHERE questions.country_id = '.$user->getCountry();
+        $row_sql = 'SELECT * FROM questions WHERE questions.country = '.$user->getCountry();
         $statement = $this->adapter->query($row_sql);
+
         $result = $statement->execute();
         $posts = null;
         if($result->count()>0){
@@ -468,7 +469,7 @@ class RepositoryImpl implements RepositoryInterface
 
     public function Get_Report(User $user)
     {
-        $row_sql = 'SELECT * FROM report_forms WHERE report_forms.country_id = '.$user->getCountry();
+        $row_sql = 'SELECT * FROM report_forms WHERE report_forms.country = '.$user->getCountry();
         $statement = $this->adapter->query($row_sql);
         $result = $statement->execute();
         $posts = null;
